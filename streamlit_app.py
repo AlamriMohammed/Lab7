@@ -18,8 +18,11 @@ def get_prediction(input_data):
 def main():
     st.title("ML Prediction App")
 
+    # Input for current_value, kept as an integer
     feature1 = st.number_input("Enter Current Value:", value=0)
-    feature2 = st.number_input("Enter number of Goals:", value=0)
+
+    # Input for goals, changed to a float with a range of 0 to 1
+    feature2 = st.number_input("Enter number of Goals (0 to 1):", value=0.0, min_value=0.0, max_value=1.0, step=0.01)
 
     if st.button("Predict"):
         input_data = {
