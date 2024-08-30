@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
-
+import numpy as np
 model = joblib.load('dbscan.joblib')
-scaler = joblib.load('scaler1.joblib')
+scaler = joblib.load('scaler.joblib')
 
 app = FastAPI()
 
@@ -17,7 +17,10 @@ def preprocessing(input_features: InputFeatures):
         'goals': input_features.goals
     }
     feature_list = [dict_f[key] for key in sorted(dict_f)]
-    return scaler.transform([list(dict_f.values)])
+    if isinstance(scaler, np.ndarray):
+        raise ValueError("The loaded object is a numpy array, not a scaler.")
+
+    return scaler.transform([feature_list])
 
 @app.get("/")
 def read_root():
@@ -26,5 +29,5 @@ def read_root():
 @app.post("/predict")
 async def predict(input_features: InputFeatures):
     data = preprocessing(input_features)
-    y_pred = model.predict(data)  # Ensure the model supports predict method
+    y_pred = model.fit_predict(data)
     return {"cluster": int(y_pred[0])}
