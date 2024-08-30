@@ -14,8 +14,8 @@ async def read_item(item_id):
 # url = "http://localhost:8000/me"
 # data = {
 # "Year": 2020,
-# "Engine_Size": 2.5,
-# "Mileage": 15000,
+# "goals": 2.5,
+# "current_value": 15000,
 # "Type": "Accent",
 # "Make": "Hyundai",
 # "Options": "Full"
@@ -26,23 +26,22 @@ async def read_item(item_id):
 
 import joblib
 # model = joblib.load('knn_model.joblib')
-model = joblib.load("Log_Reg.joblib")
-scaler = joblib.load("Scaler.joblib")
-
+model = joblib.load("dbscan.joblib")
+scaler = joblib.load("scaler.joblib")
 
 from pydantic import BaseModel
 # Define a Pydantic model for input data validation
 class InputFeatures(BaseModel):
     # highest_value: int
-        Mileage: int
-        Engine_Size: float
+    current_value: int
+    goals: float
  
 
 def preprocessing(input_features: InputFeatures):
     dict_f = {
     # 'highest_value': input_features.highest_value
-        'Mileage': input_features.Mileage,
-        'Engine_Size': input_features.Engine_Size
+        'current_value': input_features.current_value,
+        'goals': input_features.goals
 
     }
     feature_list = [dict_f[key] for key in sorted(dict_f)]
