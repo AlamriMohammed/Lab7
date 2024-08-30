@@ -33,8 +33,8 @@ def main():
     if st.button("Predict"):
         # Create input data to send to the API
         input_data = {
-            "feature1": feature1,
-            "feature2": feature2
+            "current_value": feature1,
+            "goals": feature2
         }
 
         # Get prediction from the API
