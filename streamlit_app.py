@@ -20,8 +20,6 @@ def get_prediction(input_data):
 def main():
     st.title("ML Prediction App")
 
-    # Display the image
-    st.image(image_path, caption="Visual Representation", use_column_width=True)
 
     # Input for current_value, kept as an integer
     feature1 = st.number_input("Enter Current Value:", value=0)
@@ -37,6 +35,8 @@ def main():
 
         prediction = get_prediction(input_data)
         st.write(f"Prediction: {prediction}")
+    st.image(image_path, caption="Visual Representation", use_column_width=True)
+
 
 if __name__ == '__main__':
     main()
