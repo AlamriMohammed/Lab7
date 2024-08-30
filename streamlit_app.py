@@ -3,7 +3,7 @@ import requests
 import json
 
 # Define the URL for your API
-API_URL = "https://lab7-ue77.onrender.com"  # Replace with your API endpoint
+API_URL = "https://lab7-ue77.onrender.com/predict"  # Replace with your API endpoint
 
 # Function to get prediction from API
 def get_prediction(input_data):
