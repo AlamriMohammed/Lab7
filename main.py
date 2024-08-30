@@ -17,7 +17,7 @@ def preprocessing(input_features: InputFeatures):
         'goals': input_features.goals
     }
     feature_list = [dict_f[key] for key in sorted(dict_f)]
-    return scaler.transform([feature_list])
+    return scaler.transform([list(dict_f.values)])
 
 @app.get("/")
 def read_root():
