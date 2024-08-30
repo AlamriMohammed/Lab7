@@ -3,8 +3,8 @@ from pydantic import BaseModel
 import joblib
 
 model = joblib.load('dbscan.joblib')
-scaler = joblib.load('scaler.joblib')
-
+scaler = joblib.load('scaler1.joblib')
+ 
 app = FastAPI()
 
 class InputFeatures(BaseModel):
