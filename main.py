@@ -51,7 +51,7 @@ def preprocessing(input_features: InputFeatures):
     # return features_list.value()
 
 @app.get("/predict")
-def predict(input_features: InputFeatures):
+def predict(input_features: InputFeatures): 
     return preprocessing(input_features)
 
 @app.post("/predict")
