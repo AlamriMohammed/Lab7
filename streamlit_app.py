@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
-import json
+
+# Image file path (Make sure the image is in the same directory as your script or provide the full path)
+image_path = "pic.png"  # Replace with your actual image file name or path
 
 API_URL = "https://lab7-ue77.onrender.com/predict"  # Replace with your API endpoint
 
@@ -17,6 +19,9 @@ def get_prediction(input_data):
 
 def main():
     st.title("ML Prediction App")
+
+    # Display the image
+    st.image(image_path, caption="Visual Representation", use_column_width=True)
 
     # Input for current_value, kept as an integer
     feature1 = st.number_input("Enter Current Value:", value=0)
