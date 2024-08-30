@@ -18,7 +18,6 @@ def get_prediction(input_data):
         return f"Error: {e}"
 
 def main():
-    st.title("ML Prediction App")
 
 
     # Input for current_value, kept as an integer
