@@ -36,7 +36,7 @@ class InputFeatures(BaseModel):
     # highest_value: int
         Mileage: int
         Engine_Size: float
-
+ 
 
 def preprocessing(input_features: InputFeatures):
     dict_f = {
